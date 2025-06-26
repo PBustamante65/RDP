@@ -68,16 +68,27 @@ if disc_A > disc_B:
 else:
     print("El punto pertenece a la clase 2")
 
-xr = np.linspace(0, 5, 100)
-yr = 0.0033 * (1033 - 338 * xr + 57 * xr**2)
+
+# Region de decision
+# Utilizando la funcion discriminante y los datos de cada clase (media, covarianza y priori) se calcula la region de decision
+xr = np.linspace(0, 5, 100)  # Se generan 100 puntos entre 0 y 5
+yr = 0.0033 * (
+    1033 - 338 * xr + 57 * xr**2
+)  # Utilizando matematica, se despejan las ecuaciones para obtener la funcion de la region de decision
 
 plt.figure(3, figsize=(10, 5))
-plt.plot(A[:, 0], A[:, 1], "*", label="Clase 1")
+plt.plot(
+    A[:, 0], A[:, 1], "*", label="Clase 1"
+)  # Graficamos todos los puntos de x (A[:,0], todos los puntos de y (A[:,1])
 plt.plot(B[:, 0], B[:, 1], "x", label="Clase 2")
-plt.scatter(mean_A[0], mean_A[1], label="Media de A")
+plt.scatter(
+    mean_A[0], mean_A[1], label="Media de A"
+)  # Calculamos la media de cada clase
 plt.scatter(mean_B[0], mean_B[1], label="Media de B")
-plt.scatter(x[0], x[1], marker="D", color="black", label="Punto de prueba")
-plt.plot(xr, yr, label="Region de decision")
+plt.scatter(
+    x[0], x[1], marker="D", color="black", label="Punto de prueba"
+)  # Mostramos el punto de prueba
+plt.plot(xr, yr, label="Region de decision")  # Mostramos la region de decision
 plt.title("Diagrama de dispersion")
 plt.xlabel("X")
 plt.ylabel("Y")

@@ -55,6 +55,7 @@ def classify(X, y, data, classes, plot=False):
         #     f"Duracion del prestamo: {dato[0]},\n Cantidad del prestamo: {dato[1]},\n Tasa de interes: {dato[2]},\n Tiempo de residencia: {dato[3]},\n Edad: {dato[4]},\n Creditos existentes: {dato[5]},\n Personas a cargo: {dato[6]}"
         # )
         print(f"Prediccion de riesgo del cliente: {prediccion}")
+        print(f"Probabilidades de cada clase:  {dict(zip(classes, probabilidad))}")
         # print(f"Probabilidades de cada clase: {classes[probabilidad]}")
 
     groups = np.unique(y)
