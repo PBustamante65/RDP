@@ -62,42 +62,42 @@ def classify(X, y, data, classes, plot=False):
     for g in groups:
         Xc.append(X_train_scaled[y_train == g])
 
-    # if plot == True:
-    #     plt.figure(figsize=(10, 6))
-    #
-    #     x_min, x_max = (
-    #         X_train_scaled[:, 0].min() - 1,
-    #         X_train_scaled[:, 0].max() + 1,
-    #     )
-    #     y_min, y_max = (
-    #         X_train_scaled[:, 1].min() - 1,
-    #         X_train_scaled[:, 1].max() + 1,
-    #     )
-    #     xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
-    #
-    #     Z = gnb.predict(np.c_[xx.ravel(), yy.ravel()])
-    #     Z = Z.reshape(xx.shape)
-    #
-    #     plt.contourf(xx, yy, Z, alpha=0.4, levels=len(groups) - 1, cmap="coolwarm")
-    #
-    #     for i in range(len(Xc)):
-    #         plt.scatter(Xc[i][:, 0], Xc[i][:, 1], label=f"Clase {i+1}")
-    #
-    #     for i, cliente in enumerate(data_scaled):
-    #         plt.scatter(
-    #             cliente[0],
-    #             cliente[1],
-    #             marker=f"${i+1}*$",
-    #             s=200,
-    #             c="red",
-    #             label=f"Cliente {i+1}",
-    #         )
-    #     plt.xlabel("Credit Amount (Scaled)")
-    #     plt.ylabel("Duration (Scaled)")
-    #     plt.title("Credit Risk Assessment (Naive Bayes)")
-    #     plt.legend()
-    #     plt.grid(True)
-    #     plt.show()
+    if plot == True:
+        plt.figure(figsize=(10, 6))
+
+        x_min, x_max = (
+            X_train_scaled[:, 0].min() - 1,
+            X_train_scaled[:, 0].max() + 1,
+        )
+        y_min, y_max = (
+            X_train_scaled[:, 1].min() - 1,
+            X_train_scaled[:, 1].max() + 1,
+        )
+        xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+
+        Z = gnb.predict(np.c_[xx.ravel(), yy.ravel()])
+        Z = Z.reshape(xx.shape)
+
+        plt.contourf(xx, yy, Z, alpha=0.4, levels=len(groups) - 1, cmap="coolwarm")
+
+        for i in range(len(Xc)):
+            plt.scatter(Xc[i][:, 0], Xc[i][:, 1], label=f"Clase {i+1}")
+
+        for i, cliente in enumerate(data_scaled):
+            plt.scatter(
+                cliente[0],
+                cliente[1],
+                marker=f"${i+1}*$",
+                s=200,
+                c="red",
+                label=f"Cliente {i+1}",
+            )
+        plt.xlabel("Credit Amount (Scaled)")
+        plt.ylabel("Duration (Scaled)")
+        plt.title("Credit Risk Assessment (Naive Bayes)")
+        plt.legend()
+        plt.grid(True)
+        plt.show()
 
 
 features = [
