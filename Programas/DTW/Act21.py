@@ -1,5 +1,8 @@
 # Reconocimiento de voz DTW
 
+
+#!sudo apt-get install libportaudio2
+
 import numpy as np
 import matplotlib.pyplot as plt
 import librosa
