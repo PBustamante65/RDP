@@ -461,22 +461,18 @@ class ML:
             plt.show()
 
     def Run(self):
-        pass
 
+        X_train, X_test, y_train, y_test = self.Preprocess()
 
-# df = pd.read_csv(
-#     "/Users/patrickbustamante/Library/CloudStorage/GoogleDrive-p317694@uach.mx/My Drive/Verano Reconocimiento/ML/Linear Regression/used_car_price_dataset_extended.csv"
-# )
+        self.LogReg(X_train, X_test, y_train, y_test)
+        self.SVMLin(X_train, X_test, y_train, y_test)
+        self.SVM(X_train, X_test, y_train, y_test)
+        self.DecisionTree(X_train, X_test, y_train, y_test)
+        self.RandomForest(X_train, X_test, y_train, y_test)
+        self.AdaBoost(X_train, X_test, y_train, y_test)
+        self.GradientBoost(X_train, X_test, y_train, y_test)
+        self.XGBoost(X_train, X_test, y_train, y_test)
 
-# print(df.head())
-
-#
-# X = df.drop(["transmission"], axis=1)
-# y = df["transmission"]
-
-# X_train, X_test, y_train, y_test = Preprocess(X, y)
-#
-# LogReg(X_train, X_test, y_train, y_test)
 
 test_pd = pd.read_csv(
     "/Users/patrickbustamante/Library/CloudStorage/GoogleDrive-p317694@uach.mx/My Drive/Verano Reconocimiento/ML/Classification/archive/test.csv"
@@ -487,7 +483,7 @@ train_pd = pd.read_csv(
 
 df2 = pd.concat([train_pd, test_pd], axis=0)
 
-print(df2.head())
+# print(df2.head())
 
 df2.drop(["id"], axis=1, inplace=True)
 df2.dropna(inplace=True)
@@ -496,18 +492,5 @@ df2.dropna(inplace=True)
 X = df2.drop(["price_range"], axis=1)
 y = df2["price_range"]
 
-# print(df2.info())
-X_train, X_test, y_train, y_test = Preprocess(X, y)
-
-LogReg(X_train, X_test, y_train, y_test)
-SVMLin(X_train, X_test, y_train, y_test)
-SVM(X_train, X_test, y_train, y_test)
-DecisionTree(X_train, X_test, y_train, y_test)
-RandomForest(X_train, X_test, y_train, y_test)
-AdaBoost(X_train, X_test, y_train, y_test)
-GradientBoost(X_train, X_test, y_train, y_test)
-XGBoost(X_train, X_test, y_train, y_test)
-
-
-# svc = LinearSVC()
-# print(svc.get_params())
+MLTrain = ML(X, y, classification=True, dump=True, plot=False, verbose=True)
+MLTrain.Run()
